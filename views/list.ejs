@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body class="grey-bg">
+
+  <%- include('nav.ejs') %>   <!-- include 문법 다른 ejs파일에 있던 html 복사 가능 -->
+  <!-- 재사용이 많은 UI를 복사붙여넣기 할때 유용 -->
+
+  <div class="white-bg">
+  <%  for (let i = 0; i < posts.length; i++) {  %>
+    <div class="list-box">
+      <h4><%= posts[i].title %></h4>
+      <p><%= posts[i].content %></p>
+    </div>
+  <% } %>
+  </div> 
+
+</body>
+</h tml>
