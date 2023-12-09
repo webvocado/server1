@@ -5,6 +5,7 @@ body {
 .nav {
   display: flex;
   padding: 15px;
+  height: 30px;
   align-items: center;
   background : grey;
 }
@@ -14,8 +15,17 @@ body {
   text-decoration: none;
   color: aliceblue;
 }
-.nav a {
-  margin-right: 20px;
+.nav-menu {
+  margin: 0 20px;
+  color: whitesmoke;
+}
+.nav-menu:hover {
+  margin: 0 20px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background-color: black;
 }
 
 

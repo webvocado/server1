@@ -31,12 +31,11 @@ app.get('/', function(요청, 응답) {
 //   응답.send('오늘 비옴')
 // })
 
-// app.get('/list', async (요청, 응답) => {
-//   let result = await db.collection('post').find().toArray() 
-//   // 컬렉션의 document 전부 출력하는 법
-//   응답.send(result[0].title) 
-//   응답.render('list.ejs', { posts : result }) 
-// }) 
+app.get('/list', async (요청, 응답) => {
+  let result = await db.collection('post').find().toArray() 
+  // 컬렉션의 document 전부 출력하는 법
+  응답.render('list.ejs', { posts : result }) 
+}) 
 
 // app.get('/time', (req, res) => {
 //   res.render('time.ejs', { time : new Date() })
@@ -47,11 +46,22 @@ app.get('/write', (req, res) => {
 })
 
 
-app.post('/add', (req, res) => {
-  res.send('전송 완료');
+app.post('/add', async (req, res) => {
+  
   let a = req.body.title;
-  let b = req.body.date;
-  db.collection('post').insertOne({할일: a, 날짜: b}, function(에러, 결과){
-      console.log('굳뜨');
-  });
+  let b = req.body.content;
+
+  try {
+    if(a == '' || b == '') { // 제목이 비어있으면 DB저장 X
+      res.send('제목/콘텐츠 입력해야지!')
+    } else {
+    await db.collection('post').insertOne({title: a, content: b});
+    res.redirect('/list');
+    }
+  } catch(e) {
+    console.log(e); // 에러메세지 출력해줌
+    res.status(500).send('서버 에러남')
+  }
+  // DB 오류 같은걸로 에러메시지가 뜰 수 있는데 이럴 때 try catch문 사용해보자.
+
 }); 
