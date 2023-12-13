@@ -2,10 +2,12 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
+/* nav.ejs */
 .nav {
   display: flex;
   padding: 15px;
-  height: 30px;
+  height: 50px;
   align-items: center;
   background : grey;
 }
@@ -29,9 +31,10 @@ body {
 }
 
 
-
+/* list.ejs */
 .grey-bg {
   background: #eee;
+  height: 80%;
 }
 .white-bg {
   background: white;
@@ -52,9 +55,12 @@ body {
   color: grey;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
 
-
-
+/* index.html */
 .posts {
   display: flex;
   flex-direction: column;
@@ -84,4 +90,12 @@ body {
   position: relative;
   width: 100px;
   left: 365px;
+}
+
+
+/* detail.ejs */
+.detail-bg {
+  background: white;
+  padding: 15px;
+  margin-top: 10px;
 }
